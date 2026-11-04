@@ -1,0 +1,2396 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#123d29">
+  <meta name="description" content="Agroinsumos LaFinquita: catálogo agrícola y tienda en línea con pago seguro para el campo colombiano.">
+  <script>document.documentElement.classList.add("js")</script>
+  <title>Agroinsumos LaFinquita | Tu aliado en el campo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#174831;
+      --green-dark:#0b2e1d;
+      --green-soft:#dcebd9;
+      --cream:#f6f5ee;
+      --white:#fff;
+      --ink:#183126;
+      --muted:#647267;
+      --line:#dce6da;
+      --accent:#d85631;
+      --accent-dark:#b94325;
+      --gold:#e6b55d;
+      --danger:#a23d34;
+      --shadow:0 18px 48px rgba(18,65,42,.12);
+      --shadow-lg:0 28px 70px rgba(9,38,25,.2);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{
+      margin:0;
+      background:var(--cream);
+      color:var(--ink);
+      font-family:"Manrope",Arial,sans-serif;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    ::selection{background:var(--green);color:var(--white)}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    img{max-width:100%}
+    [hidden]{display:none!important}
+    h1,h2,h3{letter-spacing:-.03em}
+    h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+      outline:3px solid var(--gold);
+      outline-offset:3px;
+    }
+
+    .container{width:min(1180px,calc(100% - 40px));margin:auto}
+    .topline{
+      padding:8px 16px;
+      background:var(--green-dark);
+      color:#eaf4e8;
+      text-align:center;
+      font-size:.73rem;
+      font-weight:700;
+      letter-spacing:.04em;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid rgba(220,230,218,.9);
+      background:rgba(255,255,255,.9);
+      box-shadow:0 8px 24px rgba(15,51,32,.04);
+      backdrop-filter:blur(16px);
+    }
+
+    .navwrap{
+      width:min(1240px,100%);
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      gap:24px;
+      margin:auto;
+      padding:10px 24px;
+    }
+
+    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .brand-mark{
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      border:1px solid #cde0ca;
+      border-radius:14px;
+      background:linear-gradient(145deg,#f8fff7,#dcecd8);
+      box-shadow:0 8px 18px rgba(24,72,49,.12);
+      color:var(--green);
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:1.35rem;
+      font-weight:700;
+    }
+
+    .brand strong{display:block;color:var(--green);font-size:1rem;line-height:1.08}
+    .brand small{display:block;color:var(--accent);font-size:.57rem;font-weight:800;letter-spacing:.13em}
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:20px;
+      flex:1;
+      font-size:.79rem;
+      font-weight:800;
+    }
+
+    .navlinks a{position:relative;color:#4d6254}
+    .navlinks a::after{
+      position:absolute;
+      right:0;
+      bottom:-9px;
+      left:0;
+      height:2px;
+      border-radius:4px;
+      background:var(--accent);
+      content:"";
+      transform:scaleX(0);
+      transition:transform .2s ease;
+    }
+
+    .navlinks a:hover,.navlinks a.active{color:var(--green)}
+    .navlinks a:hover::after,.navlinks a.active::after{transform:scaleX(1)}
+
+    .cart-link{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:9px 13px;
+      border:1px solid #cfe0cc;
+      border-radius:12px;
+      background:#f8fcf7;
+      color:var(--green);
+      font-size:.82rem;
+      font-weight:800;
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+
+    .cart-link:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(23,72,49,.12)}
+    .count{
+      min-width:22px;
+      padding:2px 7px;
+      border-radius:20px;
+      background:var(--accent);
+      color:var(--white);
+      font-size:.7rem;
+      text-align:center;
+    }
+
+    .menu-toggle{
+      display:none;
+      width:42px;
+      height:42px;
+      border:1px solid #cfe0cc;
+      border-radius:10px;
+      background:#f8fcf7;
+      color:var(--green);
+      font-size:1.2rem;
+    }
+
+    .hero{
+      position:relative;
+      min-height:min(760px,calc(100svh - 108px));
+      display:grid;
+      align-items:center;
+      overflow:hidden;
+      isolation:isolate;
+      color:var(--white);
+      background:var(--green-dark);
+    }
+
+    .hero::before{
+      position:absolute;
+      z-index:-1;
+      inset:0;
+      background:linear-gradient(90deg,rgba(8,39,25,.96) 0%,rgba(12,53,32,.8) 45%,rgba(13,48,30,.2) 100%);
+      content:"";
+    }
+
+    .hero::after{
+      position:absolute;
+      z-index:-1;
+      right:-180px;
+      bottom:-250px;
+      width:580px;
+      height:580px;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:50%;
+      content:"";
+      box-shadow:0 0 0 55px rgba(255,255,255,.04),0 0 0 110px rgba(255,255,255,.03);
+    }
+
+    .hero-inner{
+      width:min(1180px,100%);
+      margin:auto;
+      padding:112px 24px 145px;
+    }
+
+    .hero-inner::after{
+      display:block;
+      width:74px;
+      height:4px;
+      margin-top:44px;
+      border-radius:5px;
+      background:var(--gold);
+      content:"";
+    }
+
+    .eyebrow{
+      color:#dcebcf;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .eyebrow.dark{color:#4e8753}
+    .hero h1{
+      max-width:780px;
+      margin:18px 0;
+      font-size:clamp(3rem,7vw,6rem);
+      line-height:.98;
+    }
+
+    .hero p{max-width:590px;margin:0;color:#e6efe4;font-size:1.04rem}
+    .hero-actions,.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:27px}
+
+    .btn{
+      min-height:45px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 17px;
+      border:1px solid transparent;
+      border-radius:10px;
+      font-size:.84rem;
+      font-weight:800;
+      transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
+    }
+
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 22px rgba(10,44,27,.15)}
+    .btn-primary{background:var(--green);color:var(--white)}
+    .btn-primary:hover{background:var(--green-dark)}
+    .btn-outline{border-color:#c9d9c6;background:var(--white);color:var(--green)}
+    .btn-outline:hover{border-color:var(--green);background:#f0f7ed}
+    .btn-danger{border-color:#ecc8c4;background:#fff7f6;color:var(--danger)}
+    .hero .btn-primary{background:var(--accent)}
+    .hero .btn-primary:hover{background:var(--accent-dark)}
+    .hero .btn-outline{
+      border-color:rgba(255,255,255,.6);
+      background:rgba(255,255,255,.08);
+      color:var(--white);
+    }
+
+    .section{padding:84px 0}
+    .section-white{background:var(--white)}
+    .section-heading{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:32px}
+    .section-heading h2{margin:7px 0 0;font-size:clamp(2.2rem,4vw,3.45rem);line-height:1.1}
+    .section-heading p{max-width:590px;margin:9px 0 0;color:var(--muted)}
+    .small{font-size:.8rem;color:var(--muted)}
+
+    .info-strip{
+      position:relative;
+      z-index:3;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:-44px;
+    }
+
+    .info-box{
+      position:relative;
+      overflow:hidden;
+      padding:24px;
+      border:1px solid rgba(216,230,214,.9);
+      border-radius:16px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 14px 34px rgba(20,68,42,.1);
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+
+    .info-box::before{
+      position:absolute;
+      top:0;
+      left:0;
+      width:5px;
+      height:100%;
+      background:var(--accent);
+      content:"";
+    }
+
+    .info-box:nth-child(2)::before{background:var(--gold)}
+    .info-box:nth-child(3)::before{background:#5b9260}
+    .info-box:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .info-box strong{display:block;color:var(--green);font-size:.95rem}
+    .info-box p{margin:6px 0 0;color:var(--muted);font-size:.83rem}
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .category-card{
+      position:relative;
+      min-height:230px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      overflow:hidden;
+      padding:22px;
+      border:0;
+      border-radius:18px;
+      color:var(--white);
+      background:
+        linear-gradient(180deg,rgba(9,37,23,.08),rgba(8,34,22,.9)),
+        var(--card-image) center/cover;
+      box-shadow:var(--shadow);
+      transition:transform .3s ease,box-shadow .3s ease,background-size .4s ease;
+    }
+
+    .category-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg)}
+    .category-icon{
+      width:46px;
+      height:46px;
+      display:grid;
+      place-items:center;
+      margin-bottom:auto;
+      border:1px solid rgba(255,255,255,.34);
+      border-radius:12px;
+      background:rgba(255,255,255,.13);
+      font-size:1.4rem;
+      backdrop-filter:blur(8px);
+    }
+
+    .category-card h3{margin:19px 0 4px;font-size:1.15rem}
+    .category-card p{margin:0;color:rgba(255,255,255,.85);font-size:.8rem}
+
+    .notice{
+      margin:20px 0;
+      padding:14px 16px;
+      border:1px solid #ecd8a6;
+      border-radius:13px;
+      background:#fff9e7;
+      color:#665722;
+      font-size:.84rem;
+    }
+
+    .toolbar{
+      display:grid;
+      grid-template-columns:1fr 260px;
+      gap:14px;
+      margin:24px 0;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:#f7faf5;
+    }
+
+    .field{
+      width:100%;
+      min-height:48px;
+      padding:11px 13px;
+      border:1px solid #d1dfcf;
+      border-radius:10px;
+      background:var(--white);
+      color:var(--ink);
+      transition:border-color .2s ease,box-shadow .2s ease;
+    }
+
+    .field:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(23,72,49,.12);outline:0}
+    textarea.field{min-height:110px;resize:vertical}
+
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .product-card{
+      display:flex;
+      min-width:0;
+      flex-direction:column;
+      overflow:hidden;
+      border:1px solid #e0e9df;
+      border-radius:18px;
+      background:var(--white);
+      box-shadow:0 8px 26px rgba(18,62,38,.07);
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+
+    .product-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+    .product-photo{position:relative;display:block;width:100%;height:245px;overflow:hidden;padding:0;border:0;background:#edf5eb}
+    .product-photo img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .product-card:hover .product-photo img{transform:scale(1.06)}
+
+    .product-body{display:flex;flex:1;flex-direction:column;padding:19px}
+    .category-label{color:#4f8853;font-size:.69rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .product-body h3{margin:8px 0;font-size:1.12rem;line-height:1.3}
+    .product-description{margin:0 0 14px;color:var(--muted);font-size:.83rem}
+    .price{margin:0 0 12px;color:var(--green);font-size:.9rem;font-weight:800}
+
+    .card-actions{display:flex;gap:8px;margin-top:auto}
+    .card-actions .btn{flex:1;padding:9px 7px;font-size:.75rem}
+    .empty{
+      grid-column:1/-1;
+      padding:42px 20px;
+      border:1px dashed #bfceb9;
+      border-radius:16px;
+      background:#fbfdf9;
+      text-align:center;
+    }
+
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
+    .feature-image{width:100%;min-height:410px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow)}
+    .check-list{padding-left:20px}
+    .check-list li{margin:8px 0}
+    .check-list li::marker{color:var(--accent)}
+
+    .panel{
+      min-width:0;
+      padding:24px;
+      border:1px solid #e0e9df;
+      border-radius:18px;
+      background:var(--white);
+      box-shadow:0 10px 30px rgba(18,62,38,.06);
+    }
+
+    .panel h2,.panel h3{margin-top:0}
+    .cart-layout,.checkout-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(285px,.8fr);gap:22px;align-items:start}
+    .cart-summary{position:sticky;top:98px}
+    .cart-row{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto auto;
+      gap:14px;
+      align-items:center;
+      padding:15px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .cart-product{display:flex;gap:13px;align-items:center;min-width:0}
+    .cart-product img{width:72px;height:72px;flex-shrink:0;border-radius:10px;object-fit:cover;background:var(--green-soft)}
+    .cart-product strong{display:block;line-height:1.25}
+    .quantity{display:flex;align-items:center;gap:10px}
+    .quantity button{
+      width:31px;
+      height:31px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:var(--white);
+      color:var(--green);
+      font-weight:800;
+    }
+
+    .remove-item{margin-top:4px;padding:0;border:0;background:none;color:var(--danger);font-size:.74rem;font-weight:800}
+    .summary-line{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .form-group.full{grid-column:1/-1}
+    .field-label{display:block;margin-bottom:6px;font-size:.83rem;font-weight:800}
+    .consent{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.8rem}
+    .consent input{margin-top:5px}
+    .payment-methods{
+  margin:18px 0;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#f7faf5;
+}
+.payment-methods legend{padding:0 6px;color:var(--green);font-size:.9rem;font-weight:800}
+.payment-grid{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.payment-option{display:block}
+.payment-option-body{
+  display:flex;
+  gap:10px;
+  min-height:92px;
+  padding:13px;
+  border:1px solid #d1dfcf;
+  border-radius:11px;
+  background:var(--white);
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+.payment-icon{
+  display:grid;
+  width:34px;
+  height:34px;
+  flex-shrink:0;
+  place-items:center;
+  border-radius:9px;
+  background:var(--green-soft);
+  font-size:1.05rem;
+}
+.payment-option strong,.payment-option small{display:block}
+.payment-option strong{color:var(--green);font-size:.82rem}
+.payment-option small{margin-top:3px;color:var(--muted);font-size:.71rem;line-height:1.35}
+
+@media(max-width:540px){
+  .payment-grid{grid-template-columns:1fr}
+}
+    .btn-block{width:100%;margin-top:9px}
+
+    footer{position:relative;overflow:hidden;padding:62px 0 18px;background:var(--green-dark);color:var(--white)}
+    footer::before{
+      position:absolute;
+      top:-260px;
+      right:-130px;
+      width:420px;
+      height:420px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:50%;
+      content:"";
+      box-shadow:0 0 0 50px rgba(255,255,255,.025),0 0 0 100px rgba(255,255,255,.02);
+    }
+
+    footer .container{position:relative}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+    footer h3{margin-top:0;font-size:1rem}
+    footer p,footer a{color:#dbe8d9;font-size:.82rem}
+    footer a:hover{color:var(--white);text-decoration:underline}
+    .footer-mark{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:var(--white);color:var(--green);font-family:"DM Serif Display",Georgia,serif;font-size:1.35rem;font-weight:700}
+    .brand-mark img,.footer-mark img{display:block;width:80%;height:auto}
+    .fineprint{margin-top:34px;padding-top:15px;border-top:1px solid rgba(255,255,255,.16);color:#bfcfbd;font-size:.74rem;text-align:center}
+
+    dialog{
+      width:min(940px,calc(100% - 28px));
+      max-height:90vh;
+      overflow:auto;
+      padding:0;
+      border:0;
+      border-radius:20px;
+      color:var(--ink);
+      box-shadow:var(--shadow-lg);
+    }
+
+    dialog::backdrop{background:rgba(4,24,14,.78);backdrop-filter:blur(4px)}
+    dialog[open]{animation:dialog-enter .25s ease both}
+    .dialog-header{
+      position:sticky;
+      top:0;
+      z-index:2;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 20px;
+      border-bottom:1px solid var(--line);
+      background:var(--white);
+    }
+
+    .icon-button{width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:var(--white);color:var(--green);font-size:1.1rem}
+    .dialog-content{padding:24px}
+    .detail-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px}
+    .detail-layout img{width:100%;max-height:440px;object-fit:contain;border-radius:14px;background:#f4f8f1}
+    .detail-info h2{margin:20px 0 7px;font-family:"Manrope",Arial,sans-serif;font-size:1rem;font-weight:800}
+    .pill{display:inline-block;padding:5px 9px;border-radius:20px;background:var(--green-soft);color:var(--green);font-size:.72rem;font-weight:800}
+    .detail-info li{margin:6px 0;color:#4d5e51;font-size:.88rem}
+
+    .toast{
+      position:fixed;
+      z-index:100;
+      right:20px;
+      bottom:80px;
+      max-width:calc(100% - 40px);
+      padding:14px 17px;
+      border-left:4px solid var(--gold);
+      border-radius:14px;
+      background:var(--green);
+      color:var(--white);
+      box-shadow:var(--shadow-lg);
+      font-size:.84rem;
+    }
+
+    .toast:not([hidden]){animation:toast-in .3s ease both}
+    .skip-link{
+      position:fixed;
+      z-index:200;
+      top:12px;
+      left:12px;
+      padding:10px 14px;
+      border-radius:8px;
+      background:var(--white);
+      color:var(--green);
+      font-weight:800;
+      transform:translateY(-160%);
+      transition:transform .2s ease;
+    }
+
+    .skip-link:focus{transform:translateY(0)}
+    .back-to-top{
+      position:fixed;
+      z-index:30;
+      right:20px;
+      bottom:20px;
+      width:46px;
+      height:46px;
+      border:0;
+      border-radius:50%;
+      background:var(--accent);
+      color:var(--white);
+      box-shadow:0 12px 26px rgba(170,67,34,.28);
+      font-size:1.2rem;
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(14px);
+      transition:opacity .2s ease,transform .2s ease,background .2s ease;
+    }
+
+    .back-to-top:hover{background:var(--accent-dark)}
+    .back-to-top.is-visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+    [data-view]:not([hidden]){animation:view-in .35s ease both}
+
+    @keyframes view-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    @keyframes dialog-enter{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+    @keyframes toast-in{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:none}}
+
+    @media(max-width:920px){
+      .navwrap{position:relative;gap:12px}
+      .navlinks{
+        position:absolute;
+        top:calc(100% + 8px);
+        right:14px;
+        left:14px;
+        display:none;
+        width:auto;
+        padding:12px;
+        border:1px solid #d6e4d3;
+        border-radius:14px;
+        background:rgba(255,255,255,.98);
+        box-shadow:var(--shadow-lg);
+      }
+
+      .navlinks.open{display:grid;gap:2px}
+      .navlinks a{padding:11px 12px;border-radius:8px}
+      .navlinks a:hover{background:#f0f7ed}
+      .navlinks a::after{display:none}
+      .menu-toggle{display:grid;place-items:center;margin-left:auto}
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+      .product-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:650px){
+      .container{width:calc(100% - 28px)}
+      .topline{font-size:.65rem}
+      .navwrap{min-height:68px;padding:10px 14px}
+      .brand-mark{width:42px;height:42px}
+      .brand strong{font-size:.86rem}
+      .brand small{font-size:.47rem}
+      .cart-link{padding:8px 10px;font-size:0}
+      .cart-link .count{font-size:.7rem}
+      .hero{min-height:625px}
+      .hero-inner{padding:78px 22px 100px}
+      .hero h1{font-size:clamp(3rem,14vw,4.25rem)}
+      .hero p{font-size:.93rem}
+      .section{padding:60px 0}
+      .section-heading{align-items:start;flex-direction:column;margin-bottom:25px}
+      .info-strip{grid-template-columns:1fr;margin-top:-24px}
+      .info-box{padding:19px}
+      .category-grid,.product-grid{grid-template-columns:1fr}
+      .category-card{min-height:210px}
+      .toolbar,.two-col,.cart-layout,.checkout-layout,.detail-layout,.form-grid{grid-template-columns:1fr}
+      .form-group.full{grid-column:auto}
+      .product-photo{height:235px}
+      .feature-image{min-height:280px}
+      .cart-summary{position:static}
+      .cart-row{grid-template-columns:1fr auto}
+      .cart-product{grid-column:1/-1}
+      .footer-grid{grid-template-columns:1fr}
+      .dialog-content{padding:16px}
+      .panel{padding:18px}
+      .back-to-top{right:14px;bottom:14px}
+    }
+
+
+    /* ---------- Movimiento y secciones nuevas ---------- */
+    .count.bump{animation:bump .5s cubic-bezier(.2,.8,.2,1.4)}
+    .btn:disabled{cursor:wait;opacity:.65;transform:none;box-shadow:none}
+    .btn.added{background:var(--accent);color:var(--white)}
+    .btn-wa{background:#1f9d55;color:var(--white)}
+    .btn-wa:hover{background:#178044}
+
+    .hero-bg{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;animation:kenburns 24s ease-in-out infinite alternate}
+    .hero-step{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d) * 130ms + 120ms)}
+    .hero-float{position:absolute;top:50%;right:max(24px,calc((100% - 1180px) / 2 + 24px));width:330px;height:430px;transform:translateY(-50%)}
+    .float-card{
+      position:absolute;
+      width:185px;
+      margin:0;
+      padding:8px 8px 10px;
+      border-radius:18px;
+      background:rgba(255,255,255,.95);
+      box-shadow:var(--shadow-lg);
+      color:var(--green);
+      font-size:.8rem;
+      font-weight:800;
+      animation:float 6s ease-in-out infinite,pop .8s cubic-bezier(.2,.8,.2,1.3) both;
+    }
+    .float-card img{display:block;width:100%;height:118px;margin-bottom:8px;border-radius:12px;object-fit:cover;background:var(--green-soft)}
+    .float-card figcaption{padding:0 4px}
+    .f1{top:0;left:0;--r:-5deg;animation-delay:0s,.5s}
+    .f2{top:135px;right:0;--r:4deg;animation-delay:-2s,.75s}
+    .f3{bottom:0;left:35px;--r:-2deg;animation-delay:-4s,1s}
+
+    .marquee{overflow:hidden;margin-top:48px;padding:15px 0;background:var(--green);color:#eaf4e8}
+    .marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite;font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .marquee-track span{padding-right:46px;white-space:nowrap}
+    .marquee:hover .marquee-track{animation-play-state:paused}
+
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .stat{padding:28px 18px;border:1px solid var(--line);border-radius:18px;background:var(--white);box-shadow:0 10px 30px rgba(18,62,38,.06);text-align:center}
+    .stat strong{display:block;color:var(--green);font-family:"DM Serif Display",Georgia,serif;font-size:clamp(2.4rem,5vw,3.4rem);font-weight:400;line-height:1}
+    .stat span{display:block;margin-top:8px;color:var(--muted);font-size:.84rem;font-weight:700}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .step{position:relative;padding:30px 24px;border:1px solid var(--line);border-radius:20px;background:var(--white);box-shadow:0 10px 30px rgba(18,62,38,.06);transition:transform .3s ease,box-shadow .3s ease}
+    .step:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .step-num{position:absolute;top:18px;right:20px;color:var(--green-soft);font-family:"DM Serif Display",Georgia,serif;font-size:3.4rem;line-height:1}
+    .step-icon{display:grid;width:62px;height:62px;place-items:center;margin-bottom:18px;border-radius:18px;background:var(--green-soft);font-size:1.8rem;transition:transform .4s cubic-bezier(.2,.8,.2,1.4)}
+    .step:hover .step-icon{transform:rotate(-8deg) scale(1.1)}
+    .step h3{margin:0 0 6px;color:var(--green)}
+    .step p{margin:0;color:var(--muted);font-size:.87rem}
+
+    .cta-band{
+      position:relative;
+      overflow:hidden;
+      padding:96px 0;
+      color:var(--white);
+      background:linear-gradient(100deg,rgba(8,39,25,.95) 15%,rgba(12,53,32,.62)),var(--bg) center/cover;
+    }
+    .cta-band h2{max-width:640px;margin:10px 0;font-size:clamp(2.1rem,4.5vw,3.3rem);line-height:1.08}
+    .cta-band p{max-width:560px;color:#e6efe4}
+    .cta-band .btn-outline{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08);color:var(--white)}
+
+
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .value-card{padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,#fbfdf9,#eef6ec);transition:transform .3s ease,box-shadow .3s ease}
+    .value-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .value-icon{display:grid;width:54px;height:54px;place-items:center;border-radius:16px;background:var(--white);box-shadow:0 8px 18px rgba(18,62,38,.1);font-size:1.6rem}
+    .value-card h3{margin:16px 0 6px;color:var(--green)}
+    .value-card p{margin:0;color:var(--muted);font-size:.88rem}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+    .feature{display:grid;gap:3px;padding:18px;border-radius:16px;background:var(--green);color:var(--white)}
+    .feature span{font-size:1.5rem}
+    .feature small{color:#d5e6d2;font-size:.78rem}
+
+    .contact-layout{align-items:start}
+    .contact-extra{margin-top:40px}
+    .contact-cards{display:grid;gap:12px;margin-top:24px}
+    .contact-card{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--white);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .contact-card:hover{border-color:#91b38f;box-shadow:var(--shadow);transform:translateX(6px)}
+    .contact-icon{display:grid;width:50px;height:50px;flex-shrink:0;place-items:center;border-radius:14px;background:var(--green-soft);font-size:1.4rem}
+    .contact-card strong,.contact-card small{display:block}
+    .contact-card strong{color:var(--green)}
+    .contact-card small{color:var(--muted);font-size:.8rem}
+    .contact-form{display:grid;gap:14px}
+    .contact-form h3{margin:0}
+    .contact-photo{width:calc(100% + 48px);height:190px;margin:-24px -24px 4px;border-radius:18px 18px 0 0;object-fit:cover;background:var(--green-soft)}
+    .faq{max-width:820px;margin-top:56px}
+    .faq h3{color:var(--green);font-size:1.3rem}
+    .faq details{margin-bottom:10px;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#fbfdf9;transition:box-shadow .25s ease}
+    .faq details[open]{box-shadow:0 10px 26px rgba(18,62,38,.08)}
+    .faq summary{display:flex;justify-content:space-between;gap:12px;padding:16px 18px;color:var(--green);font-weight:800;cursor:pointer;list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";font-size:1.3rem;line-height:1;transition:transform .25s ease}
+    .faq details[open] summary::after{transform:rotate(45deg)}
+    .faq details p{margin:0;padding:0 18px 16px;color:var(--muted);font-size:.9rem;animation:view-in .3s ease both}
+
+    .wa-float{
+      position:fixed;
+      z-index:40;
+      bottom:20px;
+      left:20px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 18px;
+      border-radius:40px;
+      background:#1f9d55;
+      color:var(--white);
+      font-size:.85rem;
+      font-weight:800;
+      animation:wa-pulse 2.6s ease-in-out infinite;
+    }
+    .wa-float:hover{background:#178044}
+
+    /* Tarjetas de producto */
+    .product-card{animation:card-in .55s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0) * 70ms)}
+    .product-photo{background:linear-gradient(100deg,#edf5eb 30%,#f8fcf6 50%,#edf5eb 70%) 0 0/250% 100%;animation:shimmer 1.4s linear infinite}
+    .product-photo:has(img.loaded){animation:none}
+    .product-photo img{opacity:0;transition:opacity .5s ease,transform .5s ease}
+    .product-photo img.loaded{opacity:1}
+    .product-photo:has(img.failed)::before{position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;content:"🌱"}
+    .product-photo::after{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(8,34,22,.55));content:"";opacity:0;transition:opacity .3s ease}
+    .photo-cta{position:absolute;z-index:1;bottom:14px;left:50%;padding:7px 14px;border-radius:20px;background:var(--white);color:var(--green);font-size:.75rem;font-weight:800;opacity:0;transform:translate(-50%,10px);transition:opacity .3s ease,transform .3s ease}
+    .product-card:hover .product-photo::after,.product-card:hover .photo-cta{opacity:1}
+    .product-card:hover .photo-cta{transform:translate(-50%,0)}
+    .featured-grid{grid-template-columns:repeat(4,1fr)}
+
+
+    /* Aparición al hacer scroll (solo con JavaScript activo) */
+    .js .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 90ms)}
+    .js .reveal.in{opacity:1;transform:none}
+    .js .reveal.in:hover{transition-delay:0s}
+
+    @keyframes kenburns{from{transform:scale(1.15) translate(-1.5%,0)}to{transform:scale(1) translate(1%,-1%)}}
+    @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+    @keyframes pop{from{opacity:0;scale:.8}to{opacity:1;scale:1}}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    @keyframes card-in{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+    @keyframes shimmer{to{background-position:-250% 0}}
+    @keyframes bump{50%{transform:scale(1.5)}}
+    @keyframes wa-pulse{0%,100%{box-shadow:0 0 0 0 rgba(31,157,85,.5),0 14px 30px rgba(20,110,60,.3)}60%{box-shadow:0 0 0 14px rgba(31,157,85,0),0 14px 30px rgba(20,110,60,.3)}}
+
+    @media(max-width:1100px){
+      .hero-float{display:none}
+    }
+
+    @media(max-width:920px){
+      .stats,.features,.featured-grid{grid-template-columns:repeat(2,1fr)}
+      .steps,.values-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:650px){
+      .stats{gap:12px}
+      .stat{padding:22px 12px}
+      .features,.featured-grid{grid-template-columns:1fr}
+      .cta-band{padding:70px 0}
+      .wa-float{bottom:14px;left:14px;padding:13px 15px}
+      .wa-float .wa-label{display:none}
+      .contact-photo{width:calc(100% + 36px);margin:-18px -18px 4px}
+    }
+
+
+    /* ---------- Módulo de pagos ---------- */
+    .payment-choice{position:relative;display:block;height:100%;cursor:pointer}
+    .payment-input{position:absolute;opacity:0;pointer-events:none}
+    .payment-choice .payment-option-body{height:100%}
+    .payment-choice:hover .payment-option-body{border-color:#91b38f;transform:translateY(-2px)}
+    .payment-input:checked + .payment-option-body{border-color:var(--green);background:#f0f7ed;box-shadow:0 0 0 3px rgba(23,72,49,.14)}
+    .payment-input:checked + .payment-option-body .payment-icon{background:var(--green);animation:bump .4s ease}
+    .payment-input:focus-visible + .payment-option-body{outline:3px solid var(--gold);outline-offset:3px}
+    .payment-input:disabled + .payment-option-body{cursor:not-allowed;opacity:.55;transform:none}
+    .method-help{margin:12px 0 0;color:var(--muted);font-size:.8rem}
+    .method-help:not(:empty){animation:view-in .3s ease both}
+    .pay-dialog{width:min(600px,calc(100% - 28px))}
+    .pay-steps{display:flex;gap:8px;margin:0 0 18px;padding:0;color:var(--muted);font-size:.72rem;font-weight:800;list-style:none}
+    .pay-steps li{flex:1;padding-top:8px;border-top:3px solid var(--line);transition:border-color .3s ease,color .3s ease}
+    .pay-steps li.on{border-color:var(--green);color:var(--green)}
+    .pay-dialog h3{margin:0 0 10px;color:var(--green)}
+    .pay-dialog h3:focus{outline:0}
+    .summary-line .unit{display:block;color:var(--muted);font-size:.74rem}
+    .summary-line.total{border-top:2px solid var(--green);font-size:1.05rem}
+    .pay-method{display:flex;gap:12px;align-items:center;margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:#f7faf5;animation:view-in .3s ease both}
+    .pay-method strong,.pay-method small{display:block}
+    .pay-method small{color:var(--muted);font-size:.78rem}
+    .link-button{margin-left:auto;padding:0;border:0;background:none;color:var(--accent);font-size:.78rem;font-weight:800;text-decoration:underline;white-space:nowrap}
+    .pay-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .pay-actions .btn{flex:1 1 200px}
+    .sim-box,.bank-box{margin:16px 0;padding:14px 16px;border-radius:14px}
+    .sim-box{border:1px dashed #d8b24a;background:#fffbea}
+    .sim-box legend{padding:0 6px;color:#7a5b00;font-size:.8rem;font-weight:800}
+    .sim-results{display:flex;flex-wrap:wrap;gap:8px}
+    .sim-results label{display:flex;gap:6px;align-items:center;padding:7px 11px;border:1px solid #e6d28f;border-radius:20px;background:var(--white);font-size:.8rem;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+    .sim-results label:has(input:checked){border-color:var(--green);background:#f0f7ed}
+    .sim-data{margin:4px 0 10px;font-size:.84rem}
+    .sim-tag{display:inline-block;margin-bottom:10px;padding:4px 10px;border-radius:20px;background:#fff1c2;color:#7a5b00;font-size:.72rem;font-weight:800;letter-spacing:.04em}
+    .bank-box{border:1px solid var(--line);background:#f7faf5;font-size:.86rem}
+    .bank-box dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0}
+    .bank-box dt{color:var(--muted)}
+    .bank-box dd{margin:0;font-weight:800}
+    .bank-box ol{padding-left:20px}
+    .pay-processing{display:grid;justify-items:center;gap:8px;padding:26px 10px;text-align:center}
+    .pay-processing p{margin:0}
+    .spinner{width:54px;height:54px;border:5px solid var(--green-soft);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
+    .pay-result{text-align:center}
+    .pay-result h3{margin:0 0 6px;font-family:"DM Serif Display",Georgia,serif;font-size:1.8rem;font-weight:400;line-height:1.15}
+    .pay-result .lead{margin:0 auto;max-width:440px;color:var(--muted)}
+    .result-icon{display:grid;width:84px;height:84px;place-items:center;margin:6px auto 14px;border-radius:50%;color:var(--white);animation:pop .5s cubic-bezier(.2,.8,.2,1.4) both}
+    .result-icon svg{width:44px;height:44px}
+    .result-icon path{stroke-dasharray:40;animation:draw .6s .3s ease backwards}
+    .result-approved{background:#1f9d55;box-shadow:0 0 0 10px rgba(31,157,85,.15)}
+    .result-pending,.result-verification{background:var(--gold);box-shadow:0 0 0 10px rgba(230,181,93,.18)}
+    .result-rejected,.result-error{background:var(--danger);box-shadow:0 0 0 10px rgba(162,61,52,.14)}
+    .result-cancelled{background:#7d8a80;box-shadow:0 0 0 10px rgba(125,138,128,.16)}
+    .result-details{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:18px 0 0;padding:16px;border-radius:14px;background:#f7faf5;font-size:.86rem;text-align:left}
+    .result-details dt{color:var(--muted)}
+    .result-details dd{margin:0;font-weight:800;text-align:right;word-break:break-word}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes draw{from{stroke-dashoffset:40}to{stroke-dashoffset:0}}
+    @media(max-width:540px){
+      .pay-method{flex-wrap:wrap}
+      .link-button{margin-left:0}
+      .result-details{grid-template-columns:1fr;gap:2px}
+      .result-details dd{margin-bottom:8px;text-align:left}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <div class="topline">Tu aliado en el campo · Catálogo agrícola para crecer juntos</div>
+
+  <header>
+    <div class="navwrap">
+      <a class="brand" href="#inicio" aria-label="Agroinsumos LaFinquita, inicio">
+        <span class="brand-mark" aria-hidden="true"><img src="data:image/png;base64,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" alt=""></span>
+        <span>
+          <strong>Agroinsumos<br>LaFinquita</strong>
+          <small>Tu aliado en el campo</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+      <nav class="navlinks" id="main-nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#tienda">Catálogo</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="cart-link" href="#carrito" aria-label="Abrir carrito">
+        <span aria-hidden="true">🛒</span>
+        <span class="count" data-cart-count>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div id="inicio" data-view="inicio">
+    <section class="hero">
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85" alt="">
+      <div class="hero-inner">
+        <span class="eyebrow hero-step" style="--d:0">Soluciones para el campo colombiano</span>
+        <h1 class="hero-step" style="--d:1">El campo crece cuando crecemos juntos.</h1>
+        <p class="hero-step" style="--d:2">Explora agroinsumos, semillas, abonos y herramientas para acompañar cada etapa de tu cultivo.</p>
+        <div class="hero-actions hero-step" style="--d:3">
+          <a class="btn btn-primary" href="#tienda">Explorar catálogo →</a>
+          <a class="btn btn-outline" href="#contacto">Solicitar información</a>
+        </div>
+      </div>
+
+      <div class="hero-float" aria-hidden="true">
+        <figure class="float-card f1"><img src="https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?auto=format&fit=crop&w=500&q=75" alt=""><figcaption>🍅 Semillas</figcaption></figure>
+        <figure class="float-card f2"><img src="https://images.unsplash.com/photo-1710223221719-6251cb1b5c5b?auto=format&fit=crop&w=500&q=75" alt=""><figcaption>🌱 Fertilizantes</figcaption></figure>
+        <figure class="float-card f3"><img src="https://images.unsplash.com/photo-1778265592435-24e9f967811d?auto=format&fit=crop&w=500&q=75" alt=""><figcaption>🪴 Siembra</figcaption></figure>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="info-strip" aria-label="Beneficios" data-stagger>
+        <article class="info-box">
+          <strong>🌱 Catálogo organizado</strong>
+          <p>Encuentra referencias por categoría para una búsqueda más sencilla.</p>
+        </article>
+        <article class="info-box">
+          <strong>📋 Información clara</strong>
+          <p>Consulta composición, uso y precauciones de cada producto.</p>
+        </article>
+        <article class="info-box">
+          <strong>🔒 Pago en línea seguro</strong>
+          <p>Paga con tarjeta, PSE, Nequi, Daviplata o efectivo a través de ePayco.</p>
+        </article>
+      </section>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>🌿 Abonos orgánicos</span><span>🌱 Fertilizantes</span><span>🍅 Semillas de hortalizas</span><span>🌽 Maíz</span><span>💧 Riego</span><span>✂️ Herramientas</span><span>🧤 Protección</span>
+        <span>🌿 Abonos orgánicos</span><span>🌱 Fertilizantes</span><span>🍅 Semillas de hortalizas</span><span>🌽 Maíz</span><span>💧 Riego</span><span>✂️ Herramientas</span><span>🧤 Protección</span>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container stats" data-stagger>
+        <div class="stat"><strong id="stat-products" data-count="12">0</strong><span>productos en catálogo</span></div>
+        <div class="stat"><strong data-count="5">0</strong><span>categorías para tu cultivo</span></div>
+        <div class="stat"><strong data-count="5">0</strong><span>medios de pago</span></div>
+        <div class="stat"><strong>24/7</strong><span>tienda en línea abierta</span></div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow dark">Lo más buscado</span>
+            <h2>Productos destacados.</h2>
+            <p>Una selección para empezar: nutrición, siembra, poda y riego.</p>
+          </div>
+          <a class="btn btn-outline" href="#tienda">Ver todo el catálogo →</a>
+        </div>
+        <div class="product-grid featured-grid" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow dark">Así de fácil</span>
+            <h2>Compra en tres pasos.</h2>
+          </div>
+        </div>
+        <div class="steps" data-stagger>
+          <article class="step">
+            <span class="step-num">1</span>
+            <span class="step-icon" aria-hidden="true">🛒</span>
+            <h3>Elige tus productos</h3>
+            <p>Revisa la ficha, el precio y la presentación, y agrégalos al carrito.</p>
+          </article>
+          <article class="step">
+            <span class="step-num">2</span>
+            <span class="step-icon" aria-hidden="true">🔒</span>
+            <h3>Paga en línea</h3>
+            <p>Tarjeta, PSE, Nequi, Daviplata o efectivo en la pasarela segura de ePayco.</p>
+          </article>
+          <article class="step">
+            <span class="step-num">3</span>
+            <span class="step-icon" aria-hidden="true">🚚</span>
+            <h3>Recibe y cultiva</h3>
+            <p>Te contactamos por WhatsApp para coordinar la entrega en tu casa o finca.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" style="--bg:url('https://images.unsplash.com/photo-1750967613671-297f1b63038d?auto=format&fit=crop&w=1800&q=80')">
+      <div class="container reveal">
+        <span class="eyebrow">Asesoría sin costo</span>
+        <h2>¿No sabes qué producto necesita tu cultivo?</h2>
+        <p>Cuéntanos qué siembras y en qué municipio estás. Te orientamos por WhatsApp antes de que compres.</p>
+        <div class="actions">
+          <a class="btn btn-wa" data-wa="Hola, quiero asesoría para mi cultivo." href="#" target="_blank" rel="noopener noreferrer">💬 Escríbenos al 320 978 4919</a>
+          <a class="btn btn-outline" href="#tienda">Ver catálogo</a>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section" id="categorias" data-view="categorias">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Encuentra lo que necesitas</span>
+            <h2>Soluciones para cada labor.</h2>
+            <p>Selecciona una categoría y filtra automáticamente el catálogo.</p>
+          </div>
+        </div>
+
+        <div class="category-grid" data-stagger>
+          <a class="category-card" href="#tienda" data-category="Abonos orgánicos" style="--card-image:url('https://images.unsplash.com/photo-1642952273588-ed6fa28870ac?auto=format&fit=crop&w=1000&q=80')">
+            <span class="category-icon">🌿</span>
+            <h3>Abonos orgánicos</h3>
+            <p>Opciones para el acondicionamiento del suelo.</p>
+          </a>
+
+          <a class="category-card" href="#tienda" data-category="Fertilizantes" style="--card-image:url('https://images.unsplash.com/photo-1710223221719-6251cb1b5c5b?auto=format&fit=crop&w=1000&q=80')">
+            <span class="category-icon">🌱</span>
+            <h3>Fertilizantes</h3>
+            <p>Consulta composición y documentación disponible.</p>
+          </a>
+
+          <a class="category-card" href="#tienda" data-category="Semillas y siembra" style="--card-image:url('https://images.unsplash.com/photo-1778265592435-24e9f967811d?auto=format&fit=crop&w=1000&q=80')">
+            <span class="category-icon">🌽</span>
+            <h3>Semillas y siembra</h3>
+            <p>Referencias para iniciar y acompañar cultivos.</p>
+          </a>
+
+          <a class="category-card" href="#tienda" data-category="Herramientas y riego" style="--card-image:url('https://images.unsplash.com/photo-1485627658391-1365e4e0dbfe?auto=format&fit=crop&w=1000&q=80')">
+            <span class="category-icon">💧</span>
+            <h3>Riego y herramientas</h3>
+            <p>Accesorios para labores de campo y huerta.</p>
+          </a>
+
+          <a class="category-card" href="#tienda" data-category="Herramientas y protección" style="--card-image:url('https://images.unsplash.com/photo-1582586131076-6c308a437385?auto=format&fit=crop&w=1000&q=80')">
+            <span class="category-icon">🧤</span>
+            <h3>Protección</h3>
+            <p>Implementos para trabajar con seguridad.</p>
+          </a>
+
+          <a class="category-card" href="#tienda" data-category="" style="--card-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80')">
+            <span class="category-icon">🔎</span>
+            <h3>Ver todo el catálogo</h3>
+            <p>Explora todas las referencias disponibles.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="tienda" data-view="tienda">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Nuestro catálogo</span>
+            <h2>Productos destacados.</h2>
+            <p>Revisa la ficha de cada producto y agrégalo al carrito.</p>
+          </div>
+          <span class="small" id="product-count">0 referencias</span>
+        </div>
+
+        <div class="notice">
+          Precios en pesos colombianos (COP). Las imágenes son ilustrativas.
+        </div>
+
+        <div class="toolbar">
+          <input class="field" id="search-products" type="search" placeholder="Buscar producto, categoría o característica..." aria-label="Buscar productos">
+          <select class="field" id="filter-category" aria-label="Filtrar por categoría">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="nosotros" data-view="nosotros">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow dark">Quiénes somos</span>
+          <h2>Un aliado para quienes trabajan la tierra.</h2>
+          <p>Agroinsumos LaFinquita es un catálogo agrícola creado para reunir referencias de insumos, semillas, abonos y herramientas en un espacio claro y fácil de consultar.</p>
+          <p>Queremos ayudarte a revisar la información disponible, comparar necesidades y comprar en línea de forma segura.</p>
+          <p>Acompañamos desde la huerta casera hasta la finca productiva: te ayudamos a elegir el insumo adecuado, te explicamos para qué sirve y coordinamos la entrega hasta donde estés.</p>
+          <ul class="check-list">
+            <li>Catálogo organizado por categorías.</li>
+            <li>Información técnica cuando está disponible.</li>
+            <li>Precios publicados en pesos colombianos.</li>
+            <li>Pago en línea seguro con ePayco.</li>
+            <li>Atención directa por WhatsApp al 320 978 4919.</li>
+          </ul>
+          <a class="btn btn-primary" href="#tienda">Conocer productos</a>
+        </div>
+
+        <img class="feature-image" loading="lazy" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85" alt="Cultivo agrícola">
+      </div>
+    </section>
+
+    <section class="section section-white" data-view="nosotros">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow dark">Lo que nos mueve</span>
+            <h2>Misión, visión y valores.</h2>
+          </div>
+        </div>
+        <div class="values-grid" data-stagger>
+          <article class="value-card">
+            <span class="value-icon" aria-hidden="true">🎯</span>
+            <h3>Misión</h3>
+            <p>Facilitar al agricultor colombiano el acceso a insumos de calidad, con información clara, precios justos y una compra sencilla y segura.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon" aria-hidden="true">🔭</span>
+            <h3>Visión</h3>
+            <p>Ser la tienda agrícola de confianza de las familias campesinas y productores de la región, en la finca y en línea.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon" aria-hidden="true">🤝</span>
+            <h3>Valores</h3>
+            <p>Honestidad en lo que vendemos, respeto por el trabajo del campo, cuidado del suelo y atención cercana.</p>
+          </article>
+        </div>
+
+        <div class="features" data-stagger>
+          <div class="feature"><span aria-hidden="true">💲</span><strong>Precios claros</strong><small>Sabes cuánto pagas antes de comprar.</small></div>
+          <div class="feature"><span aria-hidden="true">📋</span><strong>Fichas de producto</strong><small>Composición, uso y precauciones.</small></div>
+          <div class="feature"><span aria-hidden="true">🔒</span><strong>Pago seguro</strong><small>Tus datos los procesa ePayco.</small></div>
+          <div class="feature"><span aria-hidden="true">💬</span><strong>Asesoría</strong><small>Te orientamos por WhatsApp.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" data-view="nosotros" style="--bg:url('https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&w=1800&q=80')">
+      <div class="container reveal">
+        <span class="eyebrow">Nuestro compromiso</span>
+        <h2>Cuidar el suelo es cuidar la cosecha.</h2>
+        <p>Recomendamos usar siempre productos con registro ICA, seguir la etiqueta y apoyarte en un análisis de suelo para aplicar solo lo que tu cultivo necesita.</p>
+      </div>
+    </section>
+
+    <section class="section section-white" id="carrito" data-view="carrito">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Tu compra</span>
+            <h2>Mi carrito.</h2>
+            <p>Ajusta las cantidades y continúa al pago.</p>
+          </div>
+        </div>
+
+        <div class="notice" id="payment-result" aria-live="polite" hidden></div>
+
+        <div id="cart-content"></div>
+      </div>
+    </section>
+
+    <section class="section" id="pago" data-view="carrito">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Pago</span>
+            <h2>Finaliza tu compra.</h2>
+            <p>Pagas en la pasarela segura de ePayco: esta página nunca ve ni guarda los datos de tu tarjeta o tu banco.</p>
+          </div>
+        </div>
+
+        <div class="checkout-layout">
+          <form class="panel" id="checkout-form">
+            <h3>Datos de compra y entrega</h3>
+
+            <div class="form-grid">
+              <div class="form-group full">
+                <label class="field-label" for="name">Nombre completo *</label>
+                <input class="field" id="name" name="name" maxlength="100" autocomplete="name" required placeholder="Tu nombre">
+              </div>
+
+              <div class="form-group">
+                <label class="field-label" for="email">Correo electrónico *</label>
+                <input class="field" id="email" name="email" type="email" maxlength="120" autocomplete="email" required placeholder="Para enviarte el comprobante">
+              </div>
+
+              <div class="form-group">
+                <label class="field-label" for="phone">Celular *</label>
+                <input class="field" id="phone" name="phone" type="tel" maxlength="20" autocomplete="tel" required pattern="[0-9 +()-]{7,20}" placeholder="Ej. 300 123 4567">
+              </div>
+
+              <div class="form-group">
+                <label class="field-label" for="city">Ciudad o municipio *</label>
+                <input class="field" id="city" name="city" maxlength="100" autocomplete="address-level2" required placeholder="Ej. Villavicencio">
+              </div>
+
+              <div class="form-group">
+                <label class="field-label" for="delivery">Entrega *</label>
+                <select class="field" id="delivery" name="delivery" required>
+                  <option value="Envío a domicilio">Envío a domicilio</option>
+                  <option value="Envío a finca">Envío a finca</option>
+                  <option value="Recoger en punto físico">Recoger en punto físico</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label class="field-label" for="address">Dirección, finca o vereda *</label>
+                <input class="field" id="address" name="address" maxlength="160" autocomplete="street-address" required placeholder="Dirección de entrega o de facturación">
+              </div>
+
+              <div class="form-group full">
+                <label class="field-label" for="notes">Comentarios</label>
+                <textarea class="field" id="notes" name="notes" maxlength="250" placeholder="Talla de guantes, indicaciones de entrega..."></textarea>
+              </div>
+
+              <div class="form-group full">
+                <label class="consent">
+                  <input type="checkbox" required>
+                  <span>Acepto las condiciones de compra y el tratamiento de mis datos personales (Ley 1581 de 2012).</span>
+                </label>
+              </div>
+            </div>
+
+            <fieldset class="payment-methods">
+              <legend>Elige tu método de pago *</legend>
+              <ul class="payment-grid" id="payment-options"></ul>
+              <p class="method-help" id="method-help" aria-live="polite"></p>
+            </fieldset>
+
+            <p class="notice" id="pay-mode" hidden>
+              <strong>Modo simulación.</strong> Estás viendo la página desde tu computador: los pagos son de prueba y no mueven dinero real.
+            </p>
+
+            <button class="btn btn-primary btn-block" id="pay-button" type="submit">Pagar</button>
+            <p class="notice" id="pay-error" aria-live="polite" hidden></p>
+          </form>
+
+          <aside class="panel">
+            <h3>Resumen del pedido</h3>
+            <div id="order-summary"></div>
+            <p class="small">El envío a domicilio o finca se coordina y se cobra aparte.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="contacto" data-view="contacto">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow dark">Estamos para ayudarte</span>
+          <h2>¿Tienes alguna consulta?</h2>
+          <p>Escríbenos si tienes dudas sobre un producto, la dosis adecuada para tu cultivo o el estado de tu pedido.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#tienda">Consultar catálogo</a>
+            <a class="btn btn-outline" href="#pago">Ir a pagar</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Atención comercial</h3>
+          <p>WhatsApp comercial: <a data-wa="Hola, tengo una consulta sobre sus productos." href="#" target="_blank" rel="noopener noreferrer"><strong>320 978 4919</strong></a></p>
+          <p>Ubicación y puntos físicos: pendientes de confirmar.</p>
+          <p>Horario: pendiente de confirmar.</p>
+          <!-- No publiques dirección, horario o puntos de venta hasta verificarlos. -->
+        </div>
+      </div>
+
+      <div class="container two-col contact-layout contact-extra">
+        <div class="contact-cards" data-stagger>
+          <a class="contact-card" data-wa="Hola, tengo una consulta sobre sus productos." href="#" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon" aria-hidden="true">💬</span>
+            <span><strong>WhatsApp</strong><small>320 978 4919 · escríbenos cuando quieras</small></span>
+          </a>
+          <a class="contact-card" href="tel:+573209784919">
+            <span class="contact-icon" aria-hidden="true">📞</span>
+            <span><strong>Llámanos</strong><small>+57 320 978 4919</small></span>
+          </a>
+          <a class="contact-card" href="#tienda">
+            <span class="contact-icon" aria-hidden="true">🛒</span>
+            <span><strong>Compra en línea</strong><small>Tienda abierta 24/7 con pago seguro</small></span>
+          </a>
+        </div>
+
+        <form class="panel contact-form reveal" id="contact-form">
+          <img class="contact-photo" loading="lazy" src="https://images.unsplash.com/photo-1649175175427-07bb6f43e102?auto=format&fit=crop&w=900&q=80" alt="Agricultor en su cultivo">
+          <h3>Escríbenos</h3>
+          <div class="form-group">
+            <label class="field-label" for="contact-name">Nombre *</label>
+            <input class="field" id="contact-name" name="name" maxlength="80" autocomplete="name" required placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label class="field-label" for="contact-city">Municipio *</label>
+            <input class="field" id="contact-city" name="city" maxlength="80" required placeholder="Ej. Villavicencio">
+          </div>
+          <div class="form-group">
+            <label class="field-label" for="contact-message">Tu consulta *</label>
+            <textarea class="field" id="contact-message" name="message" maxlength="600" required placeholder="¿Qué cultivas y qué necesitas?"></textarea>
+          </div>
+          <button class="btn btn-wa btn-block" type="submit">💬 Enviar por WhatsApp</button>
+        </form>
+      </div>
+
+      <div class="container faq reveal">
+        <h3>Preguntas frecuentes</h3>
+        <details>
+          <summary>¿Cómo puedo pagar?</summary>
+          <p>Con tarjeta de crédito o débito, PSE, Nequi, Daviplata o en efectivo (Efecty y otros puntos), a través de la pasarela segura de ePayco. Nosotros nunca vemos los datos de tu tarjeta.</p>
+        </details>
+        <details>
+          <summary>¿Hacen envíos a mi finca?</summary>
+          <p>Sí. Después de tu compra te contactamos por WhatsApp para coordinar la entrega en tu casa o finca. El costo del envío depende del municipio y se acuerda contigo.</p>
+        </details>
+        <details>
+          <summary>¿Me ayudan a elegir la dosis de un fertilizante?</summary>
+          <p>Te orientamos según la etiqueta del producto. Para una dosis exacta recomendamos un análisis de suelo y la recomendación de un agrónomo.</p>
+        </details>
+        <details>
+          <summary>Mi pago quedó pendiente, ¿qué hago?</summary>
+          <p>Los pagos por PSE o en efectivo pueden tardar en confirmarse. Guarda tu referencia de ePayco; apenas la entidad apruebe el pago, te contactamos para la entrega.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-mark"><img src="data:image/png;base64,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" alt="Agroinsumos LaFinquita"></div>
+          <h3>Agroinsumos LaFinquita</h3>
+          <p>Tu aliado en el campo. Información y referencias para acompañar a quienes cultivan Colombia.</p>
+        </div>
+
+        <div>
+          <h3>Explora</h3>
+          <p><a href="#tienda">Catálogo</a></p>
+          <p><a href="#categorias">Categorías</a></p>
+          <p><a href="#nosotros">Nosotros</a></p>
+        </div>
+
+        <div>
+          <h3>Atención</h3>
+          <p><a href="#contacto">Contacto</a></p>
+          <p><a href="#carrito">Mi carrito</a></p>
+          <p><a href="#pago">Pagar</a></p>
+          <p><a data-wa="Hola, tengo una consulta." href="#" target="_blank" rel="noopener noreferrer">WhatsApp 320 978 4919</a></p>
+        </div>
+      </div>
+
+      <div class="fineprint">© <span id="year"></span> Agroinsumos LaFinquita</div>
+    </div>
+  </footer>
+
+  <dialog id="product-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-header">
+      <strong>Información del producto</strong>
+      <button class="icon-button" id="close-dialog" type="button" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="dialog-content" id="dialog-content"></div>
+  </dialog>
+
+  <dialog class="pay-dialog" id="pay-dialog" aria-labelledby="pay-dialog-title">
+    <div class="dialog-header">
+      <strong id="pay-dialog-title">Pago de tu pedido</strong>
+      <button class="icon-button" id="close-pay" type="button" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="dialog-content" id="pay-content"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <a class="wa-float" data-wa="Hola, quiero información sobre sus productos." href="#" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp al 320 978 4919">
+    <span aria-hidden="true">💬</span><span class="wa-label">WhatsApp</span>
+  </a>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+
+  <script>
+    "use strict";
+
+    // El pago lo crea la función api/epayco-session.js (ver LEEME.md); las llaves de ePayco viven allá, nunca aquí.
+    const CONFIG = {
+      sessionEndpoint: "/api/epayco-session",
+      currency: "COP"
+    };
+
+    const WHATSAPP = "573209784919";
+    const waLink = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+    const FEATURED = [102, 104, 109, 112];
+
+    // Métodos que muestra el checkout de ePayco (actívalos en tu panel de ePayco).
+    // bank:true = transferencia/consignación con verificación manual (requiere BANK_ACCOUNT).
+    const PAYMENT_METHODS = [
+      { id:"tarjeta", icon:"💳", name:"Tarjeta crédito / débito", note:"Visa, Mastercard, Amex y Diners, nacionales e internacionales.",
+        how:"Escribes los datos de tu tarjeta solo en la ventana segura de ePayco. Esta página nunca los ve ni los guarda." },
+      { id:"pse", icon:"🏦", name:"PSE", note:"Débito desde cualquier banco colombiano.",
+        how:"En la ventana de ePayco eliges PSE y tu banco; tu banco te pide la clave en su propia página." },
+      { id:"nequi", icon:"📱", name:"Nequi", note:"Paga desde la app con tu número.",
+        how:"En la ventana de ePayco eliges Nequi y apruebas el pago en tu app. Nunca te pediremos tu clave." },
+      { id:"daviplata", icon:"📲", name:"Daviplata", note:"Paga desde la app con tu número.",
+        how:"En la ventana de ePayco eliges Daviplata y apruebas el pago en tu app. Nunca te pediremos tu clave." },
+      { id:"efectivo", icon:"💵", name:"Efectivo", note:"Efecty, Gana, Su Red, PuntoRed y otros puntos de recaudo.",
+        how:"ePayco te da un código para pagar en un punto de recaudo. El pedido queda pendiente hasta que pagues." },
+      { id:"transferencia", icon:"🔁", name:"Transferencia bancaria", note:"Verificación manual del pago.", bank:true,
+        how:"Transfieres a la cuenta del comercio. El pedido queda pendiente hasta verificar el ingreso." },
+      { id:"consignacion", icon:"🧾", name:"Consignación bancaria", note:"Verificación manual del pago.", bank:true,
+        how:"Consignas en la cuenta del comercio. El pedido queda pendiente hasta verificar el ingreso." }
+    ];
+
+    // Cuenta para transferencia y consignación. null = esas opciones deshabilitadas.
+    // Solo con datos reales autorizados por el comercio, p. ej.:
+    // { bank:"Bancolombia", type:"Ahorros", number:"000-000000-00", holder:"Nombre del titular", nit:"" }
+    const BANK_ACCOUNT = null;
+
+    const PRODUCTS = [
+      {
+        id:101,
+        name:"Abono Orgánico La Cosecha",
+        brand:"La Cosecha",
+        category:"Abonos orgánicos",
+        price:48000,
+        unit:"Bulto x 50 kg",
+        description:"Abono orgánico a base de materia orgánica compostada (23,7 %) con nitrógeno de origen orgánico (2,1 %). Sirve para mejorar la estructura del suelo, su retención de humedad y su actividad biológica, en preparación de terreno o mantenimiento de cultivos.",
+        specs:["Materia orgánica: 23,7 %","Nitrógeno total (N): 2,1 %","Nitrógeno orgánico (N): 2,1 %","Carbono orgánico: 13,7 %","Relación carbono/nitrógeno: 6,5"],
+        use:"Acondicionamiento del suelo, sujeto a recomendaciones técnicas y condiciones del cultivo.",
+        safety:"Aplica según la etiqueta o la recomendación de un agrónomo basada en análisis de suelo.",
+        registration:"Registro de venta ICA 2345, según el listado consultado.",
+        sourceName:"Listado oficial de productos fertilizantes registrados del ICA",
+        sourceUrl:"https://www.ica.gov.co/areas/agricola/servicios/fertilizantes-y-bio-insumos-agricolas/listados/5-bd_productos-fertilizantes-registrados_30-de-no.aspx",
+        image:"abono.png"
+      },
+      {
+        id:102,
+        name:"Nutrimon Nutriladera",
+        brand:"Nutrimon",
+        category:"Fertilizantes",
+        price:165000,
+        unit:"Bulto x 50 kg",
+        description:"Fertilizante compuesto con nitrógeno (25 %), fósforo (15 %), magnesio (2 %) y azufre (3 %). Sirve para la siembra y el desarrollo inicial de los cultivos: estimula raíces y crecimiento de hojas y tallos.",
+        specs:["Nitrógeno total (N): 25,00 %","Nitrógeno amoniacal (N): 16,10 %","Nitrógeno nítrico (N): 8,90 %","Fósforo asimilable (P₂O₅): 15,00 %","Magnesio total (MgO): 2,00 %","Azufre total (S): 3,00 %"],
+        use:"Uso agrícola sujeto a etiqueta, análisis del suelo y recomendación técnica.",
+        safety:"Aplica según la etiqueta o la recomendación de un agrónomo basada en análisis de suelo. Usa guantes y no lo mezcles con otros productos sin asesoría.",
+        registration:"Producto identificado en el listado consultado del ICA. Verificar vigencia antes de vender.",
+        sourceName:"Listado oficial de productos fertilizantes registrados del ICA",
+        sourceUrl:"https://www.ica.gov.co/areas/agricola/servicios/fertilizantes-y-bio-insumos-agricolas/listados/5-bd_productos-fertilizantes-registrados_30-de-no.aspx",
+        image:"https://images.unsplash.com/photo-1710223221719-6251cb1b5c5b?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:103,
+        name:"Compost orgánico",
+        brand:null,
+        category:"Abonos orgánicos",
+        price:32000,
+        unit:"Bulto x 40 kg",
+        description:"Mezcla de residuos vegetales y estiércol descompuestos y estabilizados. Sirve para aportar materia orgánica, mejorar la textura del suelo y preparar camas de siembra, huertas y materas.",
+        specs:["Componentes: residuos vegetales y estiércol compostados.", "Aspecto: material oscuro, suelto y sin olor fuerte.", "Peso neto: 40 kg.", "Análisis de nutrientes: según el lote del fabricante."],
+        use:"Acondicionamiento del suelo según características del compost y recomendación técnica.",
+        safety:"Almacena en lugar seco y bajo sombra.",
+        registration:"Consulta el registro ICA en el empaque.",
+        image:"https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:104,
+        name:"Semillas de tomate",
+        brand:null,
+        category:"Semillas y siembra",
+        price:9500,
+        unit:"Sobre x 5 g",
+        description:"Semillas seleccionadas de tomate para semillero y posterior trasplante. Sirven para producir tomate en huertas caseras y cultivos pequeños de clima medio y cálido.",
+        specs:["Contenido: 5 g de semilla.", "Siembra: en semillero; trasplante a los 25–30 días.", "Variedad, lote y germinación: ver empaque."],
+        use:"Siembra de acuerdo con variedad, condiciones locales e indicaciones del proveedor.",
+        safety:"No consumas semillas tratadas. Mantén fuera del alcance de los niños.",
+        registration:"Consulta el registro ICA en el empaque.",
+        image:"https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:105,
+        name:"Semillas de cilantro",
+        brand:null,
+        category:"Semillas y siembra",
+        price:6500,
+        unit:"Sobre x 50 g",
+        description:"Semillas (frutos) de cilantro para siembra directa. Sirven para producir hojas aromáticas de uso culinario en huertas, materas y lotes pequeños.",
+        specs:["Contenido: 50 g de semilla.", "Siembra: directa, en surcos o al voleo.", "Cosecha de hoja: aprox. 40–50 días.", "Variedad, lote y germinación: ver empaque."],
+        use:"Siembra según indicaciones de la variedad y condiciones del cultivo.",
+        safety:"No consumas semillas tratadas. Mantén fuera del alcance de los niños.",
+        registration:"Consulta el registro ICA en el empaque.",
+        image:"https://images.unsplash.com/photo-1588879460618-9249e7d947d1?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:106,
+        name:"Semillas de lechuga",
+        brand:null,
+        category:"Semillas y siembra",
+        price:7500,
+        unit:"Sobre x 5 g",
+        description:"Semillas de lechuga para semillero o siembra directa. Sirven para producir hortaliza de hoja en huertas y cultivos de clima frío y medio.",
+        specs:["Contenido: 5 g de semilla.", "Siembra: semillero y trasplante a los 20–25 días.", "Variedad, lote y germinación: ver empaque."],
+        use:"Siembra conforme a las instrucciones del proveedor y condiciones locales.",
+        safety:"No consumas semillas tratadas. Mantén fuera del alcance de los niños.",
+        registration:"Consulta el registro ICA en el empaque.",
+        image:"https://images.unsplash.com/photo-1688176939869-27718ebf6ad9?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:107,
+        name:"Semillas de maíz",
+        brand:null,
+        category:"Semillas y siembra",
+        price:15000,
+        unit:"Bolsa x 1 kg",
+        description:"Semillas de maíz para siembra directa. Sirven para producir mazorca o grano en lotes pequeños y huertas, según la variedad y el clima de tu zona.",
+        specs:["Contenido: 1 kg de semilla.", "Siembra: directa, 2 a 3 semillas por sitio.", "Variedad o híbrido, lote y germinación: ver empaque."],
+        use:"Seleccionar según región, clima y objetivo productivo.",
+        safety:"Elige la variedad según tu clima. No consumas semillas tratadas.",
+        registration:"Consulta el registro ICA en el empaque.",
+        image:"https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:108,
+        name:"Regadera para riego manual",
+        brand:null,
+        category:"Herramientas y riego",
+        price:28000,
+        unit:"10 litros",
+        description:"Regadera plástica con mango y boquilla de lluvia fina. Sirve para regar semilleros, plántulas, huertas y jardines sin maltratar las hojas ni lavar el suelo.",
+        specs:["Material: plástico resistente.", "Capacidad: 10 litros.", "Boquilla tipo ducha desmontable."],
+        use:"Aplicación manual de agua según capacidad y diseño del producto.",
+        safety:"Lávala después de usarla con fertilizantes líquidos.",
+        registration:"No requiere registro.",
+        image:"https://images.unsplash.com/photo-1599277100479-3252d492a19a?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:109,
+        name:"Tijera de poda",
+        brand:null,
+        category:"Herramientas y riego",
+        price:35000,
+        unit:"Unidad · 8 pulgadas",
+        description:"Tijera de poda tipo bypass con hojas de acero y mangos ergonómicos con seguro. Sirve para cortar ramas, tallos y brotes de hasta 2 cm en frutales, café, jardines y viveros.",
+        specs:["Hojas: acero.", "Corte: tipo bypass (limpio, no aplasta el tallo).", "Diámetro máximo de corte: aprox. 2 cm.", "Seguro de cierre."],
+        use:"Poda y mantenimiento de plantas dentro de límites indicados por fabricante.",
+        safety:"Guárdala cerrada y con el seguro puesto. Desinfecta las hojas entre plantas.",
+        registration:"No requiere registro.",
+        image:"https://images.unsplash.com/photo-1774647001686-314f877fb9c5?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:110,
+        name:"Bandeja para semilleros",
+        brand:null,
+        category:"Semillas y siembra",
+        price:6000,
+        unit:"Bandeja de 128 cavidades",
+        description:"Bandeja plástica de 128 alvéolos para germinación. Sirve para producir plántulas de hortalizas, aromáticas y flores con la raíz protegida, listas para trasplante.",
+        specs:["Material: plástico reutilizable.", "Cavidades: 128.", "Uso con sustrato para germinación."],
+        use:"Germinación y manejo inicial de plántulas si el diseño es adecuado.",
+        safety:"Lávala y desinféctala antes de reutilizarla.",
+        registration:"No requiere registro.",
+        image:"https://images.unsplash.com/photo-1778265592435-24e9f967811d?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:111,
+        name:"Guantes para labores agrícolas",
+        brand:null,
+        category:"Herramientas y protección",
+        price:9000,
+        unit:"Par · talla M o L",
+        description:"Guantes de tela de algodón con recubrimiento de nitrilo en la palma. Sirven para siembra, desyerbe, cargue y manejo de herramientas, y protegen de raspones y cortes leves.",
+        specs:["Material: algodón con palma de nitrilo.", "Tallas: M y L (indícala en los comentarios del pedido).", "No aptos para manipular agroquímicos."],
+        use:"Solo para tareas compatibles con especificaciones verificadas.",
+        safety:"Para agroquímicos usa guantes de nitrilo certificados para protección química.",
+        registration:"No requiere registro.",
+        image:"https://images.unsplash.com/photo-1582586131076-6c308a437385?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id:112,
+        name:"Manguera para riego",
+        brand:null,
+        category:"Herramientas y riego",
+        price:48000,
+        unit:"Rollo de 15 m · 1/2 pulgada",
+        description:"Manguera flexible de PVC reforzado, de 1/2 pulgada, con acoples. Sirve para riego de huertas, jardines y viveros, y para lavado en la finca.",
+        specs:["Material: PVC reforzado.", "Longitud: 15 m.", "Diámetro: 1/2 pulgada.", "Incluye acoples."],
+        use:"Riego según especificaciones reales de la manguera y sistema instalado.",
+        safety:"Verifica que el acople sea compatible con tu llave.",
+        registration:"No requiere registro.",
+        image:"https://images.unsplash.com/photo-1485627658391-1365e4e0dbfe?auto=format&fit=crop&w=900&q=80"
+      }
+    ];
+
+    const STORAGE_KEY = "lafinquita-cart-v3";
+    // hash del menú -> vista visible (#pago vive dentro de la vista del carrito)
+    const VIEWS = { inicio:"inicio", categorias:"categorias", tienda:"tienda", nosotros:"nosotros", contacto:"contacto", carrito:"carrito", pago:"carrito" };
+    const money = new Intl.NumberFormat("es-CO", { style:"currency", currency:CONFIG.currency, maximumFractionDigits:0 });
+
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+      })[char]);
+    }
+
+    function productById(id) {
+      return PRODUCTS.find(product => product.id === Number(id));
+    }
+
+    function toast(message) {
+      const element = $("#toast");
+      element.textContent = message;
+      element.hidden = false;
+      clearTimeout(toast.timeout);
+      toast.timeout = setTimeout(() => element.hidden = true, 3500);
+    }
+
+    /* ---------- Carrito ---------- */
+
+    let cart = loadCart();
+
+    function loadCart() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        if (!Array.isArray(saved)) return [];
+        return saved
+          .filter(item => productById(item.id))
+          .map(item => ({ id:Number(item.id), qty:Math.max(1, Math.min(99, Number(item.qty) || 1)) }));
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart(next) {
+      cart = next;
+      // Sin almacenamiento (modo privado) la lista sigue funcionando en memoria.
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch {}
+      renderCart();
+      renderOrderSummary();
+
+      const units = cartTotals().units;
+      $$("[data-cart-count]").forEach(element => {
+        element.textContent = units;
+        if (units > (saveCart.lastUnits ?? units)) {
+          element.classList.remove("bump");
+          void element.offsetWidth; // reinicia la animación
+          element.classList.add("bump");
+        }
+      });
+      saveCart.lastUnits = units;
+    }
+
+    const lineLabel = item => money.format(productById(item.id).price * item.qty);
+
+    function cartTotals() {
+      return cart.reduce((totals, item) => ({
+        units:totals.units + item.qty,
+        amount:totals.amount + productById(item.id).price * item.qty
+      }), { units:0, amount:0 });
+    }
+
+    function changeQuantity(id, amount) {
+      const current = cart.find(item => item.id === id);
+      if (amount > 0 && current?.qty >= 99) return toast("Máximo 99 unidades por referencia.");
+      saveCart(current
+        ? cart.map(item => item.id === id ? { ...item, qty:item.qty + amount } : item).filter(item => item.qty > 0)
+        : [...cart, { id, qty:1 }]);
+      return true;
+    }
+
+    function addToCart(id) {
+      const product = productById(id);
+      if (product && changeQuantity(id, 1)) toast(`${product.name} fue agregado al carrito.`);
+    }
+
+    function removeFromCart(id) {
+      saveCart(cart.filter(item => item.id !== id));
+      toast("Producto retirado del carrito.");
+    }
+
+    /* ---------- Catálogo ---------- */
+
+    function productCard(product, index = 0) {
+      return `
+        <article class="product-card" style="--i:${index}">
+          <button class="product-photo" type="button" data-preview="${product.id}" aria-label="Ver ficha de ${escapeHTML(product.name)}">
+            <img loading="lazy" src="${escapeHTML(product.image)}" alt="">
+            <span class="photo-cta" aria-hidden="true">Ver ficha</span>
+          </button>
+
+          <div class="product-body">
+            <span class="category-label">${escapeHTML(product.category)}</span>
+            <h3>${escapeHTML(product.name)}</h3>
+            <p class="product-description">${escapeHTML(product.description)}</p>
+            <p class="price">${money.format(product.price)} <small>· ${escapeHTML(product.unit)}</small></p>
+
+            <div class="card-actions">
+              <button class="btn btn-outline" type="button" data-preview="${product.id}">Ver ficha</button>
+              <button class="btn btn-primary" type="button" data-add="${product.id}">Añadir</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderProducts() {
+      const search = $("#search-products").value.trim().toLocaleLowerCase("es");
+      const category = $("#filter-category").value;
+
+      const filtered = PRODUCTS.filter(product => {
+        const searchable = [product.name, product.brand, product.category, product.description, product.use, ...product.specs]
+          .filter(Boolean).join(" ").toLocaleLowerCase("es");
+        return (!search || searchable.includes(search)) && (!category || product.category === category);
+      });
+
+      $("#product-count").textContent = `${filtered.length} ${filtered.length === 1 ? "referencia" : "referencias"}`;
+      $("#product-grid").innerHTML = filtered.length
+        ? filtered.map(productCard).join("")
+        : `
+          <div class="empty">
+            <h3>No encontramos referencias</h3>
+            <p>Prueba otra búsqueda o selecciona otra categoría.</p>
+            <button class="btn btn-outline" id="clear-filters" type="button">Limpiar filtros</button>
+          </div>
+        `;
+    }
+
+    function openProduct(id) {
+      const product = productById(id);
+      if (!product) return;
+
+      const source = product.sourceUrl
+        ? `<p><strong>Fuente:</strong> <a href="${escapeHTML(product.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(product.sourceName)}</a></p>`
+        : "";
+
+      $("#dialog-content").innerHTML = `
+        <div class="detail-layout">
+          <div>
+            <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}">
+            <p class="small">Imagen ilustrativa. No confirma empaque, marca ni presentación comercial.</p>
+          </div>
+
+          <div class="detail-info">
+            <span class="pill">${escapeHTML(product.category)}</span>
+            <h1 id="dialog-title">${escapeHTML(product.name)}</h1>
+            ${product.brand ? `<p><strong>Marca declarada:</strong> ${escapeHTML(product.brand)}</p>` : ""}
+            <p><strong>Presentación:</strong> ${escapeHTML(product.unit)}</p>
+            <p><strong>Precio:</strong> ${money.format(product.price)}</p>
+
+            <h2>Composición y uso</h2>
+            <p>${escapeHTML(product.description)}</p>
+
+            <h2>Características</h2>
+            <ul>${product.specs.map(spec => `<li>${escapeHTML(spec)}</li>`).join("")}</ul>
+
+            <h2>Uso previsto</h2>
+            <p>${escapeHTML(product.use)}</p>
+
+            <h2>Precauciones</h2>
+            <p>${escapeHTML(product.safety)}</p>
+
+            <h2>Registro</h2>
+            <p>${escapeHTML(product.registration)}</p>
+
+            ${source}
+
+            <div class="actions">
+              <button class="btn btn-primary" type="button" data-add="${product.id}">Añadir al carrito</button>
+              <button class="btn btn-outline" type="button" data-close-dialog>Cerrar</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const dialog = $("#product-dialog");
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+    }
+
+    function closeProductDialog() {
+      const dialog = $("#product-dialog");
+      if (typeof dialog.close === "function") dialog.close();
+      else dialog.removeAttribute("open");
+    }
+
+    /* ---------- Carrito y pago ---------- */
+
+    function renderCart() {
+      const target = $("#cart-content");
+
+      if (!cart.length) {
+        target.innerHTML = `
+          <div class="empty">
+            <h3>Tu carrito está vacío</h3>
+            <p>Explora el catálogo y agrega los productos que necesitas.</p>
+            <a class="btn btn-primary" href="#tienda">Ir al catálogo</a>
+          </div>
+        `;
+        return;
+      }
+
+      const totals = cartTotals();
+      target.innerHTML = `
+        <div class="cart-layout">
+          <div class="panel">
+            <h3>Productos seleccionados</h3>
+
+            ${cart.map(item => {
+              const product = productById(item.id);
+              return `
+                <article class="cart-row">
+                  <div class="cart-product">
+                    <img src="${escapeHTML(product.image)}" alt="">
+                    <div>
+                      <strong>${escapeHTML(product.name)}</strong>
+                      <div class="small">${escapeHTML(product.unit)}</div>
+                      <button class="remove-item" type="button" data-remove="${product.id}">Quitar</button>
+                    </div>
+                  </div>
+
+                  <div class="quantity" role="group" aria-label="Cantidad de ${escapeHTML(product.name)}">
+                    <button type="button" data-minus="${product.id}" aria-label="Reducir cantidad">−</button>
+                    <strong>${item.qty}</strong>
+                    <button type="button" data-plus="${product.id}" aria-label="Aumentar cantidad">+</button>
+                  </div>
+
+                  <strong>${lineLabel(item)}</strong>
+                </article>
+              `;
+            }).join("")}
+
+            <div class="actions">
+              <a class="btn btn-outline" href="#tienda">Seguir explorando</a>
+              <button class="btn btn-danger" id="clear-cart" type="button">Vaciar carrito</button>
+            </div>
+          </div>
+
+          <aside class="panel cart-summary">
+            <h3>Resumen</h3>
+            <p><strong>${totals.units}</strong> unidades seleccionadas.</p>
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <strong>${money.format(totals.amount)}</strong>
+            </div>
+            <p class="small">El envío a domicilio o finca se coordina y se cobra aparte.</p>
+            <a class="btn btn-primary btn-block" href="#pago">Continuar al pago</a>
+          </aside>
+        </div>
+      `;
+    }
+
+    function renderOrderSummary() {
+      const target = $("#order-summary");
+      const totals = cartTotals();
+      $("#pay-button").textContent = cart.length ? `Pagar ${money.format(totals.amount)}` : "Pagar";
+
+      if (!cart.length) {
+        target.innerHTML = `<div class="notice">Tu carrito está vacío. <a href="#tienda">Regresa al catálogo</a>.</div>`;
+        return;
+      }
+
+      target.innerHTML = `
+        ${cart.map(item => `<div class="summary-line"><span>${escapeHTML(productById(item.id).name)} × ${item.qty}<small class="unit">${money.format(productById(item.id).price)} c/u</small></span><strong>${lineLabel(item)}</strong></div>`).join("")}
+        <div class="summary-line"><span>Subtotal</span><strong>${money.format(totals.amount)}</strong></div>
+        <div class="summary-line total"><span>Total a pagar (${totals.units} und.)</span><strong>${money.format(totals.amount)}</strong></div>
+      `;
+    }
+
+    function loadScript(src) {
+      if (document.querySelector(`script[src="${src}"]`) && window.ePayco) return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.append(script);
+      });
+    }
+
+    function showPayError(message) {
+      const order = cart.map(item => `- ${productById(item.id).name} x${item.qty}`).join("\n");
+      const box = $("#pay-error");
+      box.hidden = false;
+      box.innerHTML = `${escapeHTML(message)} <a href="${waLink(`Hola, quiero comprar:\n${order}\nTotal: ${money.format(cartTotals().amount)}`)}" target="_blank" rel="noopener noreferrer">Completa tu compra por WhatsApp</a>.`;
+    }
+
+    /* ---------- Módulo de pagos ---------- */
+
+    // Simulación: solo al abrir la página en el computador (archivo o localhost). En el dominio publicado no existe.
+    const SIMULATION = location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(location.hostname);
+    const STATUS_TEXT = { approved:"Aprobado", pending:"Pendiente", rejected:"Rechazado", cancelled:"Cancelado", error:"Error de conexión", verification:"Pendiente de verificación" };
+    const ICONS = {
+      approved:'<path d="M5 13l4 4L19 7"/>',
+      pending:'<path d="M12 6v6l4 2"/>',
+      verification:'<path d="M12 6v6l4 2"/>',
+      rejected:'<path d="M6 6l12 12M18 6L6 18"/>',
+      error:'<path d="M12 6v8M12 18h.01"/>',
+      cancelled:'<path d="M6 12h12"/>'
+    };
+    const pay = { orderId:null, cartKey:"", responded:false };
+
+    const methodById = id => PAYMENT_METHODS.find(method => method.id === id);
+    const selectedMethod = () => methodById($("#checkout-form").elements.payment.value);
+    const isAvailable = method => !method.bank || Boolean(BANK_ACCOUNT) || SIMULATION;
+
+    // Un número por carrito: si el cliente reintenta el mismo carrito se reutiliza y ePayco no cobra dos veces.
+    function currentOrderId() {
+      const key = JSON.stringify(cart);
+      if (!pay.orderId || pay.cartKey !== key) {
+        pay.cartKey = key;
+        pay.orderId = `LF-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`.toUpperCase();
+      }
+      return pay.orderId;
+    }
+
+    function openPayDialog(html) {
+      $("#pay-content").innerHTML = html;
+      const dialog = $("#pay-dialog");
+      if (!dialog.open) typeof dialog.showModal === "function" ? dialog.showModal() : dialog.setAttribute("open", "");
+      $("#pay-content [tabindex='-1']")?.focus();
+    }
+
+    function closePayDialog() {
+      const dialog = $("#pay-dialog");
+      typeof dialog.close === "function" ? dialog.close() : dialog.removeAttribute("open");
+    }
+
+    const stepBar = active => `
+      <ol class="pay-steps" aria-label="Pasos del pago">
+        ${["Revisión", "Pago", "Resultado"].map((label, index) => `<li class="${index < active ? "on" : ""}"${index === active - 1 ? ' aria-current="step"' : ""}>${index + 1}. ${label}</li>`).join("")}
+      </ol>`;
+
+    function bankBox(method, total, orderId) {
+      const account = BANK_ACCOUNT
+        ? `<dl>
+            <dt>Banco</dt><dd>${escapeHTML(BANK_ACCOUNT.bank)}</dd>
+            <dt>Tipo de cuenta</dt><dd>${escapeHTML(BANK_ACCOUNT.type)}</dd>
+            <dt>Número</dt><dd>${escapeHTML(BANK_ACCOUNT.number)}</dd>
+            <dt>Titular</dt><dd>${escapeHTML(BANK_ACCOUNT.holder)}</dd>
+            ${BANK_ACCOUNT.nit ? `<dt>NIT / C.C.</dt><dd>${escapeHTML(BANK_ACCOUNT.nit)}</dd>` : ""}
+          </dl>`
+        : `<p class="sim-data"><strong>Simulación:</strong> los datos de la cuenta del comercio aún no están registrados. No transfieras ni consignes dinero.</p>`;
+      const verb = method.id === "consignacion" ? "consignación" : "transferencia";
+      return `
+        <div class="bank-box">
+          <strong>Cómo hacer la ${verb}</strong>
+          ${account}
+          <ol>
+            <li>Haz la ${verb} por el valor exacto: <strong>${total}</strong>.</li>
+            <li>Escribe el número de pedido <strong>${orderId}</strong> en la referencia o descripción.</li>
+            <li>Envíanos el comprobante por WhatsApp al 320 978 4919.</li>
+          </ol>
+          <p class="small">Tu pedido queda <strong>pendiente de verificación</strong> hasta que confirmemos el ingreso del dinero en la cuenta. El comprobante por sí solo no confirma el pago.</p>
+        </div>`;
+    }
+
+    function simBox(method) {
+      const phone = `
+        <label class="field-label" for="sim-phone">Celular de prueba (ficticio)</label>
+        <input class="field" id="sim-phone" value="3000000000" inputmode="numeric" pattern="3[0-9]{9}" maxlength="10" required>`;
+      const data = {
+        tarjeta:`<p class="sim-data">Tarjeta de prueba ficticia: <strong>•••• •••• •••• 1111</strong>. En el pago real escribes tu tarjeta solo en la ventana segura de ePayco.</p>`,
+        pse:`<p class="sim-data">Banco de prueba ficticio. En el pago real eliges tu banco en PSE y tu banco te pide la clave en su propia página.</p>`,
+        nequi:phone,
+        daviplata:phone,
+        efectivo:`<p class="sim-data">Se generaría un código de pago ficticio para pagar en un punto de recaudo.</p>`
+      }[method.id] || "";
+      const outcomes = method.bank ? "" : `
+        <p class="field-label">Resultado a simular</p>
+        <div class="sim-results">
+          ${["approved", "rejected", "pending", "cancelled", "error"].map((status, index) => `<label><input type="radio" name="sim-result" value="${status}"${index ? "" : " checked"}> ${STATUS_TEXT[status]}</label>`).join("")}
+        </div>`;
+      return data || outcomes ? `<fieldset class="sim-box"><legend>Datos de simulación</legend>${data}${outcomes}</fieldset>` : "";
+    }
+
+    function reviewStep() {
+      const method = selectedMethod();
+      const orderId = currentOrderId();
+      const total = money.format(cartTotals().amount);
+      const action = method.bank ? "Confirmar pedido" : SIMULATION ? `Simular pago de ${total}` : `Pagar ${total}`;
+
+      openPayDialog(`
+        ${stepBar(1)}
+        <h3 tabindex="-1">Revisa tu pedido</h3>
+        ${SIMULATION ? `<span class="sim-tag">MODO SIMULACIÓN · sin dinero real</span>` : ""}
+        <div class="pay-summary">
+          ${cart.map(item => {
+            const product = productById(item.id);
+            return `<div class="summary-line"><span>${escapeHTML(product.name)} × ${item.qty}<small class="unit">${money.format(product.price)} c/u</small></span><strong>${lineLabel(item)}</strong></div>`;
+          }).join("")}
+          <div class="summary-line"><span>Subtotal</span><strong>${total}</strong></div>
+          <div class="summary-line total"><span>Total a pagar</span><strong>${total} COP</strong></div>
+        </div>
+        <p class="small">El envío a domicilio o finca se coordina y se cobra aparte.</p>
+
+        <div class="pay-method">
+          <span class="payment-icon" aria-hidden="true">${method.icon}</span>
+          <div><strong>${escapeHTML(method.name)}</strong><small>${escapeHTML(method.how)}</small></div>
+          <button class="link-button" type="button" data-pay="change">Cambiar método</button>
+        </div>
+
+        ${method.bank ? bankBox(method, total, orderId) : ""}
+        ${SIMULATION ? simBox(method) : ""}
+
+        <div class="pay-actions">
+          <button class="btn btn-outline" type="button" data-pay="change">← Cambiar método</button>
+          <button class="btn btn-primary" type="button" data-pay="confirm">${action}</button>
+        </div>
+      `);
+    }
+
+    function processingStep(message) {
+      openPayDialog(`
+        ${stepBar(2)}
+        <div class="pay-processing" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          <h3 tabindex="-1">Procesando…</h3>
+          <p>${escapeHTML(message)}</p>
+          <p class="small">No cierres ni recargues esta página.</p>
+        </div>
+      `);
+    }
+
+    function showResult(result) {
+      const { status, simulated, test } = result;
+      const real = !simulated;
+      const copy = simulated
+        ? ["¡Simulación completada correctamente!", "Esta es una operación de prueba. No se ha realizado ningún cobro real."]
+        : {
+            approved:test
+              ? ["¡Pago de prueba aprobado!", "Transacción del modo de pruebas de ePayco. No se realizó ningún cobro real."]
+              : ["¡Pago realizado correctamente!", "Tu pedido ha sido recibido y el pago ha sido confirmado. Te escribiremos por WhatsApp para coordinar la entrega."],
+            pending:["Pago pendiente", "La operación todavía está en proceso de confirmación. Tu pedido aún no está pagado; te avisaremos cuando la entidad lo confirme."],
+            rejected:["Pago rechazado", "No se pudo completar la operación y no se realizó el cobro. Puedes intentarlo de nuevo o elegir otro método."],
+            cancelled:["Pago cancelado", "Cerraste la ventana de pago antes de terminar. Si alcanzaste a pagar, ePayco te enviará el comprobante por correo."],
+            error:[result.title || "No pudimos conectar con el sistema de pagos", result.message || "Tu pedido no se ha cobrado. Revisa tu conexión e inténtalo de nuevo en unos minutos."],
+            verification:["Pedido registrado", "Tu pago está pendiente de verificación. Haz la transferencia o consignación y envíanos el comprobante; confirmaremos el ingreso antes de despachar."]
+          }[status];
+
+      const details = [
+        [simulated ? "Número de pedido de prueba" : "Número de pedido", result.orderId],
+        [simulated ? "Resultado simulado" : "Estado del pago", STATUS_TEXT[status]],
+        ["Método de pago", result.method],
+        [status === "approved" && real ? "Total pagado" : "Total", result.amount != null ? `${money.format(result.amount)} ${CONFIG.currency}` : ""],
+        ["Fecha de la operación", result.date || new Date().toLocaleString("es-CO")],
+        ["Referencia ePayco", result.reference]
+      ].filter(([, value]) => value);
+
+      const retry = ["rejected", "cancelled", "error"].includes(status) && cart.length;
+      const whatsapp = waLink(`Hola, mi pedido ${result.orderId || result.reference} (${STATUS_TEXT[status]}).`);
+
+      openPayDialog(`
+        ${stepBar(3)}
+        <div class="pay-result">
+          <span class="result-icon result-${status}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${ICONS[status]}</svg></span>
+          ${simulated ? `<span class="sim-tag">SIMULACIÓN</span>` : ""}
+          <h3 tabindex="-1">${escapeHTML(copy[0])}</h3>
+          <p class="lead">${escapeHTML(copy[1])}</p>
+          <dl class="result-details">${details.map(([label, value]) => `<dt>${label}</dt><dd>${escapeHTML(value)}</dd>`).join("")}</dl>
+          <div class="pay-actions">
+            ${retry ? `<button class="btn btn-outline" type="button" data-pay="retry">${status === "cancelled" ? "Volver al pedido" : "Intentar de nuevo"}</button>` : ""}
+            ${status === "verification" ? `<a class="btn btn-wa" href="${waLink(`Hola, envío el comprobante del pedido ${result.orderId} por ${money.format(result.amount)}.`)}" target="_blank" rel="noopener noreferrer">💬 Enviar comprobante</a>` : ""}
+            ${real && status !== "verification" ? `<a class="btn btn-outline" href="${whatsapp}" target="_blank" rel="noopener noreferrer">Consultar mi pedido</a>` : ""}
+            <a class="btn btn-primary" href="#inicio" data-pay="home">Volver al inicio</a>
+          </div>
+        </div>
+      `);
+
+      if (real) {
+        $("#payment-result").hidden = false;
+        $("#payment-result").textContent = `Pedido ${result.orderId}: ${STATUS_TEXT[status]}.`;
+        if (status === "error") showPayError(copy[1]);
+        if (["approved", "pending", "verification"].includes(status)) {
+          saveCart([]);
+          pay.orderId = null;
+        }
+      }
+      if (["rejected", "cancelled"].includes(status) || simulated) pay.orderId = null; // nuevo intento = nuevo número
+    }
+
+    async function confirmPayment() {
+      const method = selectedMethod();
+      const orderId = currentOrderId();
+      const amount = cartTotals().amount;
+
+      if (SIMULATION) {
+        const phone = $("#sim-phone");
+        if (phone && !phone.reportValidity()) return;
+        const outcome = method.bank ? "verification" : $('#pay-content input[name="sim-result"]:checked').value;
+        processingStep(method.bank ? "Registrando el pedido de prueba…" : `Simulando el pago con ${method.name}…`);
+        await new Promise(resolve => setTimeout(resolve, 1200));
+        return showResult({ status:outcome, simulated:true, orderId:orderId.replace("LF-", "PRUEBA-"), amount, method:method.name });
+      }
+
+      if (method.bank) return showResult({ status:"verification", orderId, amount, method:method.name });
+
+      processingStep("Conectando con la pasarela segura de ePayco…");
+      try {
+        const response = await fetch(CONFIG.sessionEndpoint, {
+          method:"POST",
+          headers:{ "Content-Type":"application/json" },
+          body:JSON.stringify({ orderId, method:method.id, items:cart, customer:Object.fromEntries(new FormData($("#checkout-form"))) })
+        });
+        const session = await response.json().catch(() => ({}));
+        if (!response.ok || !session.sessionId) {
+          return showResult({ status:"error", orderId, amount, method:method.name, message:session.error });
+        }
+
+        await loadScript("https://checkout.epayco.co/checkout-v2.js");
+        pay.responded = false;
+        const checkout = ePayco.checkout.configure({ sessionId:session.sessionId, type:"onpage", test:session.test });
+        checkout.setHooks?.({
+          onResponse:data => {
+            pay.responded = true;
+            const ref = data?.x_ref_payco || data?.ref_payco || data?.refPayco;
+            if (ref) verifyPayment(ref);
+          },
+          onClosed:() => {
+            if (!pay.responded) showResult({ status:"cancelled", orderId, amount:session.amount, method:method.name });
+          },
+          onErrors:() => showResult({ status:"error", orderId, amount:session.amount, method:method.name })
+        });
+        closePayDialog(); // la ventana de ePayco debe quedar por encima
+        checkout.open();
+      } catch {
+        showResult({ status:"error", orderId, amount, method:method.name });
+      }
+    }
+
+    // El resultado real siempre lo confirma el servidor consultando a ePayco (firma, monto y moneda).
+    async function verifyPayment(ref) {
+      processingStep("Verificando tu pago con ePayco…");
+      try {
+        const response = await fetch(`/api/epayco-status?ref=${encodeURIComponent(ref)}`);
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error);
+        showResult(data);
+      } catch {
+        showResult({
+          status:"error",
+          title:"No pudimos verificar el pago",
+          message:`Tu pago aún no está confirmado. Guarda tu referencia ePayco ${ref} y escríbenos por WhatsApp.`,
+          reference:ref
+        });
+      }
+    }
+
+    // ePayco regresa a la página con ?ref_payco=...; el servidor verifica el pago antes de mostrarlo.
+    function checkPaymentReturn() {
+      const ref = new URLSearchParams(location.search).get("ref_payco");
+      if (!ref) return;
+      history.replaceState(null, "", `${location.pathname}#carrito`);
+      verifyPayment(ref);
+    }
+
+    /* ---------- Navegación por vistas ---------- */
+
+    function setMenu(open) {
+      const button = $("#menu-toggle");
+      $("#main-nav").classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      button.textContent = open ? "✕" : "☰";
+    }
+
+    function showView() {
+      const id = location.hash.slice(1) || "inicio";
+      const view = VIEWS[id];
+      if (!view) return; // anclas internas, p. ej. "Saltar al contenido"
+
+      $$("[data-view]").forEach(element => element.hidden = element.dataset.view !== view);
+      $$("#main-nav a").forEach(link => link.classList.toggle("active", link.hash === `#${view}`));
+      setMenu(false);
+
+      if (id === view) window.scrollTo({ top:0, behavior:"instant" });
+      else $(`#${id}`).scrollIntoView();
+    }
+
+    window.addEventListener("hashchange", showView);
+    $("#menu-toggle").addEventListener("click", () => setMenu(!$("#main-nav").classList.contains("open")));
+
+    $("#back-to-top").addEventListener("click", () => window.scrollTo({ top:0, behavior:"smooth" }));
+    window.addEventListener("scroll", () => {
+      $("#back-to-top").classList.toggle("is-visible", window.scrollY > 500);
+    }, { passive:true });
+
+    /* ---------- Animaciones ---------- */
+
+    function countUp(element) {
+      const target = Number(element.dataset.count);
+      const start = performance.now();
+      const step = now => {
+        const progress = Math.min(1, (now - start) / 1200);
+        element.textContent = Math.round(target * (1 - (1 - progress) ** 3));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    $$("[data-stagger]").forEach(group => [...group.children].forEach((child, index) => {
+      child.classList.add("reveal");
+      child.style.setProperty("--i", index);
+    }));
+
+    const revealer = "IntersectionObserver" in window
+      ? new IntersectionObserver(entries => entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          if (entry.target.dataset.count) countUp(entry.target);
+          revealer.unobserve(entry.target);
+        }), { threshold:.15 })
+      : null;
+
+    // Las fotos aparecen con un fundido cuando terminan de cargar.
+    document.addEventListener("load", event => {
+      if (event.target.matches?.(".product-photo img")) event.target.classList.add("loaded");
+    }, true);
+    document.addEventListener("error", event => {
+      if (event.target.matches?.(".product-photo img")) event.target.classList.add("failed");
+    }, true);
+
+    /* ---------- Eventos ---------- */
+
+    document.addEventListener("click", event => {
+      const target = event.target;
+
+      // Un enlace al mismo hash no dispara hashchange: igual cierra el menú y sube.
+      const link = target.closest('a[href^="#"]');
+      if (link && link.hash === location.hash) showView();
+
+      const category = target.closest("[data-category]");
+      if (category) {
+        $("#search-products").value = "";
+        $("#filter-category").value = category.dataset.category;
+        renderProducts();
+      }
+
+      const preview = target.closest("[data-preview]");
+      if (preview) openProduct(preview.dataset.preview);
+
+      const add = target.closest("[data-add]");
+      if (add) {
+        addToCart(Number(add.dataset.add));
+        add.dataset.label ??= add.textContent;
+        add.classList.add("added");
+        add.textContent = "✓ Agregado";
+        clearTimeout(add.timer);
+        add.timer = setTimeout(() => {
+          add.classList.remove("added");
+          add.textContent = add.dataset.label;
+        }, 1300);
+      }
+
+      const remove = target.closest("[data-remove]");
+      if (remove) removeFromCart(Number(remove.dataset.remove));
+
+      const minus = target.closest("[data-minus]");
+      if (minus) changeQuantity(Number(minus.dataset.minus), -1);
+
+      const plus = target.closest("[data-plus]");
+      if (plus) changeQuantity(Number(plus.dataset.plus), 1);
+
+      if (target.closest("[data-close-dialog]")) closeProductDialog();
+
+      if (target.closest("#clear-cart") && confirm("¿Quieres vaciar el carrito?")) {
+        saveCart([]);
+        toast("Carrito vaciado.");
+      }
+
+      if (target.closest("#clear-filters")) {
+        $("#search-products").value = "";
+        $("#filter-category").value = "";
+        renderProducts();
+      }
+    });
+
+    $("#close-dialog").addEventListener("click", closeProductDialog);
+    $("#product-dialog").addEventListener("click", event => {
+      if (event.target === $("#product-dialog")) closeProductDialog();
+    });
+
+    $("#search-products").addEventListener("input", renderProducts);
+    $("#filter-category").addEventListener("change", renderProducts);
+    $("#checkout-form").addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!cart.length) {
+        toast("Agrega al menos un producto antes de pagar.");
+        location.hash = "tienda";
+        return;
+      }
+
+      if (!$("#checkout-form").reportValidity()) return;
+      $("#pay-error").hidden = true;
+      reviewStep();
+    });
+
+    $("#checkout-form").addEventListener("change", event => {
+      if (event.target.name === "payment") $("#method-help").textContent = selectedMethod().how;
+    });
+
+    $("#close-pay").addEventListener("click", closePayDialog);
+    $("#pay-dialog").addEventListener("click", event => {
+      const action = event.target.closest("[data-pay]")?.dataset.pay;
+      if (action === "confirm") confirmPayment();
+      if (action === "retry") reviewStep();
+      if (action === "change" || action === "home") {
+        closePayDialog();
+        if (action === "change") {
+          location.hash = "pago";
+          $("#payment-options input:checked, #payment-options input:not(:disabled)").focus();
+        }
+      }
+    });
+
+    $("#contact-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      window.open(waLink(`Hola, soy ${data.get("name")} (${data.get("city")}).\n${data.get("message")}`), "_blank", "noopener,noreferrer");
+    });
+
+    /* ---------- Inicio ---------- */
+
+    $("#year").textContent = new Date().getFullYear();
+    $("#filter-category").insertAdjacentHTML("beforeend",
+      [...new Set(PRODUCTS.map(product => product.category))].map(category => `<option>${escapeHTML(category)}</option>`).join(""));
+    $("#payment-options").innerHTML = PAYMENT_METHODS.map(method => `
+      <li class="payment-option">
+        <label class="payment-choice">
+          <input class="payment-input" type="radio" name="payment" value="${method.id}" required${isAvailable(method) ? "" : " disabled"}>
+          <span class="payment-option-body">
+            <span class="payment-icon" aria-hidden="true">${method.icon}</span>
+            <span><strong>${escapeHTML(method.name)}</strong><small>${escapeHTML(isAvailable(method) ? method.note : "Disponible cuando el comercio registre su cuenta.")}</small></span>
+          </span>
+        </label>
+      </li>
+    `).join("");
+    $("#pay-mode").hidden = !SIMULATION;
+
+    $("#featured-grid").innerHTML = FEATURED.map((id, index) => productCard(productById(id), index)).join("");
+    $("#stat-products").dataset.count = PRODUCTS.length;
+    $$("[data-wa]").forEach(link => link.href = waLink(link.dataset.wa));
+    $$(".reveal, [data-count]").forEach(element => revealer ? revealer.observe(element) : element.classList.add("in"));
+
+    renderProducts();
+    saveCart(cart);
+    checkPaymentReturn();
+    showView();
+  </script>
+</body>
+</html>
